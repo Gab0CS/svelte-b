@@ -1,19 +1,26 @@
 <script lang="ts">
-
+    import type { Snippet } from "svelte";
+    import { createState, GaboState } from "./sate.svelte";
     let { 
         name, 
-        fake_name = null
     }: {
         name: string
-        fake_name? : string | null
     } = $props();
+
+    const myState = createState();
+    const myState2 = new GaboState();
 
 </script>
 
-<h1>Hello {name}</h1>
-<h2>{fake_name}</h2>
+<div>
+   <h1>
+        {name ? name : 'User'}'s form
+   </h1>
+   <button onclick={myState.up}>{myState.value}</button>
+   <button onclick={() => myState2.up()}>{myState2.value}</button>
+</div>
+
 
 <style>
-
 
 </style>
